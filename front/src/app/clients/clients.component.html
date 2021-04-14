@@ -1,0 +1,38 @@
+
+<button type="button" class="btn btn-info btn-lg" (click)="openModal()">New</button>
+<button type="button" class="btn btn-info btn-lg" (click)="downloadFile()">export</button>
+<br/>
+<br/>
+<div class="input-group">
+    <input #search type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+      aria-describedby="search-addon"   search.value='' />
+    <button type="button" class="btn btn-outline-primary" (click)="searchClient(search.value)">search</button>
+</div>
+
+<div>
+    <createclientsmodal [display]="display"  (closeModal)="closeModal()" (saveClient)="saveClient($event)"></createclientsmodal>
+</div>
+<br/>
+<div>
+    <table class="table" mdbTable>
+        <thead>
+          <tr>
+            <th scope="col">Shared key</th>
+            <th scope="col">Bussiness Id</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">phone</th>
+            <th scope="col">Data Added</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let client of clients">
+            <td>{{client.sharedKey}}</td>
+            <td>{{client.bussinessId}}</td>
+            <td>{{client.email}}</td>
+            <td>{{client.phone}}</td>
+            <td>{{client.dataAdded}}</td>
+          </tr>
+        </tbody>
+    </table>
+</div>
+
